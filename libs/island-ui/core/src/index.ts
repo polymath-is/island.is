@@ -1,1 +1,1 @@
-export * from './lib/Logo/Logo'
+export * from './lib/Button/Button'

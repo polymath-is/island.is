@@ -1,21 +1,13 @@
 import React from 'react'
-import { Logo } from '@island.is/island-ui/core'
-
-import './index.scss'
+import { Button } from '@island.is/island-ui/core'
 
 export const Index = () => {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./${fileName}.${style} file.
-   */
   return (
-    <div className="app">
-      <header className="flex">
-        <h1>
-          Welcome to <Logo solid width={140} />
-        </h1>
-      </header>
+    <div>
+      <Button size="large" onClick={() => console.log('ok')}>
+        Simple text button!
+      </Button>
+      <Button variant="ghost">Simple text button!</Button>
     </div>
   )
 }

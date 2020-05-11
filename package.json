@@ -25,7 +25,8 @@
     "update": "nx migrate latest",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "storybook:island-ui": "nx run island-ui-storybook:storybook"
   },
   "private": true,
   "dependencies": {
@@ -34,16 +35,19 @@
     "apollo-client": "2.6.8",
     "apollo-link-http": "1.5.17",
     "apollo-server-express": "2.13.0",
+    "classnames": "^2.2.6",
     "document-register-element": "1.13.1",
     "express": "4.17.1",
     "graphql-tag": "2.10.3",
     "isomorphic-unfetch": "3.0.0",
     "lodash": "4.17.15",
     "next": "9.3.3",
+    "next-treat": "^1.3.0",
     "react": "16.12.0",
     "react-apollo": "3.1.5",
     "react-dom": "16.12.0",
-    "rosetta": "1.0.0"
+    "rosetta": "1.0.0",
+    "treat": "^1.4.1"
   },
   "devDependencies": {
     "@babel/core": "7.8.3",
@@ -77,6 +81,7 @@
     "@typescript-eslint/eslint-plugin": "2.19.2",
     "@typescript-eslint/parser": "2.19.2",
     "babel-loader": "8.0.6",
+    "babel-plugin-treat": "^1.1.0",
     "cypress": "^4.1.0",
     "dotenv": "6.2.0",
     "eslint": "6.8.0",
@@ -88,8 +93,12 @@
     "jest": "25.2.3",
     "node-sass": "4.13.1",
     "prettier": "1.19.1",
+    "react-treat": "^1.4.1",
     "ts-jest": "25.2.1",
     "ts-node": "~7.0.0",
     "typescript": "~3.8.3"
+  },
+  "resolutions": {
+    "webpack": "4.43.0"
   }
 }

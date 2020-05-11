@@ -1,6 +1,17 @@
-const withSass = require('@zeit/next-sass');
-module.exports = withSass({
-  // Set this to true if you use CSS modules.
-  // See: https://github.com/css-modules/css-modules
-  cssModules: false
-});
+const withTreat = require('next-treat')()
+
+module.exports = withTreat({
+  webpack(config, options) {
+    config.module.rules.push({
+      test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+      use: {
+        loader: 'url-loader',
+        options: {
+          limit: 100000,
+        },
+      },
+    })
+
+    return config
+  },
+})
