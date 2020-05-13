@@ -1,5 +1,5 @@
-import { AppProps } from 'next/app'
 import '@island.is/island-ui/core/reset'
+import { AppProps } from 'next/app'
 import { BraidProvider } from '@island.is/island-ui/core'
 import theme from '@island.is/island-ui/core/themes/jobsDb'
 
