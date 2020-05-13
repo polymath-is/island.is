@@ -1,0 +1,119 @@
+{
+  "name": "braid-design-system",
+  "version": "27.0.0",
+  "description": "Themeable design system for the SEEK Group",
+  "main": "lib/components/index.ts",
+  "sideEffects": [
+    "lib/themes/**/*",
+    "lib/reset/**/*",
+    "reset/**/*"
+  ],
+  "scripts": {
+    "test": "SKU_TELEMETRY=false sku test",
+    "start": "SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku start\" \"OPEN_TAB=false sku playroom\"",
+    "lint": "SKU_TELEMETRY=false sku lint && yarn lint-absolute-imports",
+    "lint-absolute-imports": "! grep -R \" from 'lib/\" lib/*",
+    "format": "SKU_TELEMETRY=false sku format",
+    "generate-component-docs": "ts-node generate-component-docs",
+    "generate-icons": "node scripts/generateIcons.js",
+    "setup": "SKU_TELEMETRY=false sku configure && concurrently -n \"component-docs,icons\" -c \"blueBright,yellowBright\" \"yarn generate-component-docs\" \"yarn generate-icons\"",
+    "prelint": "yarn setup",
+    "prestart": "yarn setup",
+    "prebuild": "yarn setup",
+    "build": "SKU_TELEMETRY=false concurrently -n \"docs-site,playroom\" -c \"magenta,greenBright\" \"sku build\" \"sku build-playroom\"",
+    "playroom": "SKU_TELEMETRY=false sku playroom",
+    "storybook": "SKU_TELEMETRY=false sku storybook",
+    "chromatic": "SKU_TELEMETRY=false sku chromatic",
+    "deploy": "node scripts/deploy.js",
+    "deploy-preview": "surge -p ./site/dist",
+    "post-commit-status": "node scripts/postCommitStatus.js",
+    "release": "yarn build && yarn deploy && changeset publish"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "SKU_TELEMETRY=false sku pre-commit"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seek-oss/braid-design-system.git"
+  },
+  "author": "SEEK",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seek-oss/braid-design-system/issues"
+  },
+  "homepage": "https://github.com/seek-oss/braid-design-system#readme",
+  "dependencies": {
+    "@types/autosuggest-highlight": "^3.1.0",
+    "@types/classnames": "^2.2.8",
+    "@types/dedent": "^0.7.0",
+    "@types/lodash": "^4.14.132",
+    "@types/react": "^16.8.8",
+    "autosuggest-highlight": "^3.1.1",
+    "basekick": "^3.1.1",
+    "classnames": "^2.2.6",
+    "csstype": "^2.6.4",
+    "dedent": "0.7.0",
+    "gradient-parser": "^0.1.5",
+    "is-mobile": "^2.0.1",
+    "isolated-scroll": "^0.1.0",
+    "lodash": "^4.17.15",
+    "polished": "^3.0.3",
+    "react-keyed-flatten-children": "^1.2.0",
+    "utility-types": "^3.7.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "sku": ">=8.7.1"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.5.2",
+    "@changesets/get-github-info": "^0.4.1",
+    "@octokit/rest": "^15.16.1",
+    "@svgr/core": "^5.0.1",
+    "@svgr/plugin-jsx": "^5.0.1",
+    "@svgr/plugin-prettier": "^5.0.1",
+    "@testing-library/jest-dom": "^4.2.0",
+    "@testing-library/react": "^9.3.0",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/fs-extra": "^8.0.1",
+    "@types/prettier": "^1.19.0",
+    "@types/react-dom": "^16.8.2",
+    "@types/react-router-dom": "^5.1.0",
+    "@types/sanitize-html": "^1.22.0",
+    "@types/uuid": "^3.4.6",
+    "@types/webpack-env": "^1.14.0",
+    "change-case": "^3.1.0",
+    "cheerio": "^1.0.0-rc.3",
+    "concurrently": "^4.1.0",
+    "copy-to-clipboard": "^3.2.0",
+    "didyoumean2": "^3.1.2",
+    "fs-extra": "^8.1.0",
+    "gh-pages": "^2.0.1",
+    "globby": "^10.0.1",
+    "husky": "^1.1.3",
+    "prettier": "^2.0.2",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-element-to-jsx-string": "^14.0.1",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "react-router-scroll-memory": "^2.0.5",
+    "react-syntax-highlighter": "^11.0.2",
+    "react-use": "^13.27.0",
+    "renovate-config-seek": "0.4.0",
+    "sanitize-html": "^1.22.1",
+    "sku": "10.3.2",
+    "surge": "^0.20.1",
+    "ts-node": "^8.2.0",
+    "uuid": "^3.3.3"
+  },
+  "resolutions": {
+    "playroom": "0.17.3"
+  },
+  "volta": {
+    "node": "12.14.1",
+    "yarn": "1.21.1"
+  }
+}
