@@ -18,6 +18,12 @@
     "baseUrl": ".",
     "paths": {
       "@island.is/island-ui/core": ["libs/island-ui/core/src/index.ts"],
+      "@island.is/island-ui/core/reset": [
+        "libs/island-ui/core/src/braid-design-system/reset/index.ts"
+      ],
+      "@island.is/island-ui/core/themes/*": [
+        "libs/island-ui/core/src/braid-design-system/themes/*"
+      ],
       "@island.is/web/*": ["apps/web/*"],
       "@island.is/api/domains/hello-world": [
         "libs/api/domains/hello-world/src/index.ts"
