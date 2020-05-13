@@ -1,15 +1,8 @@
 import React from 'react'
-import { Button } from '@island.is/island-ui/core'
+// import { Button } from '@island.is/island-ui/core'
 
 export const Index = () => {
-  return (
-    <div>
-      <Button size="large" onClick={() => console.log('ok')}>
-        Simple text button!
-      </Button>
-      <Button variant="ghost">Simple text button!</Button>
-    </div>
-  )
+  return <div>page</div>
 }
 
 export default Index
