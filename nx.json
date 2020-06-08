@@ -68,6 +68,13 @@
     },
     "logging": {
       "tags": []
+    },
+    "sumarfristund": {
+      "tags": []
+    },
+    "sumarfristund-e2e": {
+      "tags": [],
+      "implicitDependencies": ["sumarfristund"]
     }
   }
 }
