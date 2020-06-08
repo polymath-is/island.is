@@ -1,14 +1,17 @@
-import express from 'express'
-import createGraphqlServer from './graphql'
-
+import { Logger } from '@nestjs/common'
+import { NestFactory } from '@nestjs/core'
 import { logger } from '@island.is/logging'
 
-const app = express()
+import { AppModule } from './app/app.module'
 
-createGraphqlServer(app)
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule)
+  const globalPrefix = 'graphql'
+  app.setGlobalPrefix(globalPrefix)
+  const port = process.env.PORT || 4444
+  await app.listen(port, () => {
+    logger.info('Listening at http://localhost:' + port + '/' + globalPrefix)
+  })
+}
 
-const port = process.env.port || 4444
-const server = app.listen(port, () => {
-  logger.info(`Listening at http://localhost:${port}/graphql`)
-})
-server.on('error', logger.error)
+bootstrap()
