@@ -75,6 +75,9 @@
     "sumarfristund-e2e": {
       "tags": [],
       "implicitDependencies": ["sumarfristund"]
+    },
+    "sumarfristund-api": {
+      "tags": []
     }
   }
 }

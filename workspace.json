@@ -773,6 +773,63 @@
           }
         }
       }
+    },
+    "sumarfristund-api": {
+      "root": "apps/sumarfristund-api",
+      "sourceRoot": "apps/sumarfristund-api/src",
+      "projectType": "application",
+      "prefix": "sumarfristund-api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/sumarfristund-api",
+            "main": "apps/sumarfristund-api/src/main.ts",
+            "tsConfig": "apps/sumarfristund-api/tsconfig.app.json",
+            "assets": ["apps/sumarfristund-api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/sumarfristund-api/src/environments/environment.ts",
+                  "with": "apps/sumarfristund-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "sumarfristund-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/sumarfristund-api/.eslintrc",
+            "tsConfig": [
+              "apps/sumarfristund-api/tsconfig.app.json",
+              "apps/sumarfristund-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/sumarfristund-api/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/sumarfristund-api/jest.config.js",
+            "tsConfig": "apps/sumarfristund-api/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
