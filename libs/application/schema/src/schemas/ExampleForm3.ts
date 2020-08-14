@@ -11,20 +11,23 @@ import {
   buildRadioField,
   buildTextField,
   buildSelectField,
+  buildCustomField,
 } from '../lib/fieldBuilders'
 import { Form } from '../types/Form'
 import { nationalIdRegex } from './schemaUtils'
+import { CustomFieldComponents } from '../types/Fields'
 
 const formIcon = require('./ExampleForm3Icon.svg').default
 
 const ExampleSchema = z.object({
+  country: z.string().nonempty(),
   person: z.object({
     age: z.string().refine((x) => {
       const asNumber = parseInt(x)
       if (isNaN(asNumber)) {
         return false
       }
-      return asNumber > 15
+      return asNumber > 0
     }),
     name: z
       .string()
@@ -132,6 +135,14 @@ export const ExampleForm3: Form = buildForm({
                 },
               ],
             }),
+            buildCustomField(
+              {
+                id: 'country',
+                name: 'Where are you from?',
+                component: CustomFieldComponents.Country,
+              },
+              {},
+            ),
           ],
         }),
         buildSubSection({
