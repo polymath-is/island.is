@@ -32,6 +32,7 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
+    "ts-node": "node -r ./scripts/ts-node",
     "storybook:island-ui": "nx run island-ui-storybook:storybook"
   },
   "dependencies": {
@@ -147,6 +148,7 @@
     "swagger-ui-express": "4.1.4",
     "timeout-signal": "1.0.0",
     "treat": "1.4.1",
+    "tsconfig-paths": "^3.9.0",
     "turndown": "6.0.0",
     "uuidv4": "6.0.8",
     "webcrypto-jwt": "^0.2.2",

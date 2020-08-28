@@ -100,7 +100,8 @@
       ],
       "@island.is/service-portal/graphql": [
         "libs/service-portal/graphql/src/index.ts"
-      ]
+      ],
+      "@island.is/webpack": ["libs/webpack/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

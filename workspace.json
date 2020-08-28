@@ -2666,6 +2666,34 @@
           }
         }
       }
+    },
+    "webpack": {
+      "root": "libs/webpack",
+      "sourceRoot": "libs/webpack/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/webpack/.eslintrc",
+            "tsConfig": [
+              "libs/webpack/tsconfig.lib.json",
+              "libs/webpack/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/webpack/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/webpack/jest.config.js",
+            "tsConfig": "libs/webpack/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

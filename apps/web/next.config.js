@@ -1,6 +1,6 @@
-const withTreat = require('next-treat')()
-
 /* eslint-disable @typescript-eslint/no-var-requires */
+require('../../scripts/ts-node')
+const { withIslandIs } = require('@island.is/webpack')
 
 // These modules need to be transpiled for IE11 support. This is not ideal,
 // we should aim to drop IE11 support, or only use dependencies that have
@@ -16,7 +16,7 @@ const withTM = require('next-transpile-modules')(transpileModules)
 const { API_URL = 'http://localhost:4444' } = process.env
 const graphqlPath = '/api/graphql'
 
-module.exports = withTreat(
+module.exports = withIslandIs(
   withTM({
     cssModules: false,
     serverRuntimeConfig: {
