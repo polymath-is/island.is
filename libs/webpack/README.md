@@ -2,9 +2,9 @@
 
 Shared webpack configuration for island.is frontend projects.
 
-* Configures the Treat plugin for styles and island-ui components.
-* Later: Configures a graphql file loader for miragejs graphql server. 
-* Supports react and nextjs projects.
+- Configures the Treat plugin for styles and island-ui components.
+- Later: Configures a graphql file loader for miragejs graphql server.
+- Supports react and nextjs projects.
 
 ## Running unit tests
 

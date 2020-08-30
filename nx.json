@@ -6,8 +6,8 @@
       "dependencies": "*",
       "devDependencies": "*"
     },
-    "tsconfig.json": "*",
-    "nx.json": "*"
+    "nx.json": "*",
+    "tsconfig.base.json": "*"
   },
   "tasksRunnerOptions": {
     "default": {
@@ -213,5 +213,8 @@
     "webpack": {
       "tags": []
     }
+  },
+  "affected": {
+    "defaultBase": "master"
   }
 }
