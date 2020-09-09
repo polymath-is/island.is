@@ -59,7 +59,9 @@ export const Image: FC<AnyImageType> = (image) => {
   return (
     <div
       className={styles.container}
-      style={{ paddingTop: (originalHeight / originalWidth) * 100 + '%' }}
+      style={{
+        paddingTop: Math.min(originalHeight / originalWidth, 1) * 100 + '%',
+      }}
     >
       <img
         src={thumbnail}
