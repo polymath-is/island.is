@@ -108,7 +108,7 @@ export const variants: Variants = {
   },
   h5: {
     fontSize: {
-      xs: 15,
+      xs: 16,
       md: 18,
     },
     fontWeight: theme.typography.headingsFontWeight,
@@ -116,7 +116,7 @@ export const variants: Variants = {
   },
   p: {
     fontSize: {
-      xs: 15,
+      xs: 16,
       md: 18,
     },
     fontWeight: theme.typography.light,

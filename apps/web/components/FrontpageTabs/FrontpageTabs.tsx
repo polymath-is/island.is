@@ -201,20 +201,6 @@ export const FrontpageTabs: FC<FrontpageTabsProps> = ({
         </GridColumn>
         <GridColumn span={['12/12', '12/12', '12/12', '6/12']}>
           <div ref={contentRef}>
-            <Hidden above="md">
-              <Box
-                display="flex"
-                height="full"
-                width="full"
-                marginBottom={2}
-                justifyContent="center"
-                alignItems="center"
-                overflow="hidden"
-                style={{ maxHeight: 220 }}
-              >
-                <Image image={image} />
-              </Box>
-            </Hidden>
             <Box paddingX={[3, 3, 0]}>
               <TabList
                 {...tab}
