@@ -44,12 +44,12 @@ export const NewsletterSignup: React.FC<Props> = ({
             span={['12/12', '12/12', '4/12']}
             paddingBottom={[2, 2, 0]}
           >
-            <Typography variant="h3" as="h3">
+            <Typography variant="h3" as="h3" paddingBottom={1}>
               {heading}
             </Typography>
             <Typography variant="p">{text}</Typography>
           </GridColumn>
-          <GridColumn span={['12/12', '12/12', '5/12']}>
+          <GridColumn span={['12/12', '12/12', '4/12']} offset={['0', '0', '1/12']}>
             <Input
               name={id}
               placeholder={placeholder}
