@@ -24,128 +24,16 @@
     }
   },
   "projects": {
-    "adgerdir": {
+    "web": {
       "tags": []
     },
-    "adgerdir-e2e": {
+    "web-e2e": {
       "tags": [],
-      "implicitDependencies": ["adgerdir"]
+      "implicitDependencies": ["web"]
     },
-    "air-discount-scheme-api": {
-      "tags": []
-    },
-    "air-discount-scheme-backend": {
-      "tags": []
-    },
-    "air-discount-scheme-consts": {
-      "tags": []
-    },
-    "air-discount-scheme-types": {
-      "tags": []
-    },
-    "air-discount-scheme-web": {
-      "tags": []
-    },
-    "air-discount-scheme/web-e2e": {
+    "island-ui-core": {
       "tags": [],
-      "implicitDependencies": ["air-discount-scheme-web"]
-    },
-    "api": {
-      "tags": []
-    },
-    "api-content-search": {
-      "tags": []
-    },
-    "api-domains-application": {
-      "tags": []
-    },
-    "api-domains-cms": {
-      "tags": []
-    },
-    "api-domains-content-search": {
-      "tags": []
-    },
-    "api-domains-documents": {
-      "tags": []
-    },
-    "api-domains-file-upload": {
-      "tags": []
-    },
-    "api-domains-translations": {
-      "tags": []
-    },
-    "api-schema": {
-      "tags": []
-    },
-    "application-core": {
-      "tags": []
-    },
-    "application-data-providers": {
-      "tags": []
-    },
-    "application-graphql": {
-      "tags": []
-    },
-    "application-system-api": {
-      "tags": []
-    },
-    "application-system-form": {
-      "tags": []
-    },
-    "application-system-form-e2e": {
-      "tags": [],
-      "implicitDependencies": ["application-system-form"]
-    },
-    "application-template-loader": {
-      "tags": []
-    },
-    "application-templates-driving-lessons": {
-      "tags": []
-    },
-    "application-templates-parental-leave": {
-      "tags": []
-    },
-    "application-templates-reference-template": {
-      "tags": []
-    },
-    "application-ui-fields": {
-      "tags": []
-    },
-    "application-ui-shell": {
-      "tags": []
-    },
-    "cache": {
-      "tags": []
-    },
-    "contentful-importer": {
-      "tags": []
-    },
-    "dokobit-signing": {
-      "tags": []
-    },
-    "elastic-indexing": {
-      "tags": []
-    },
-    "email-service": {
-      "tags": []
-    },
-    "file-storage": {
-      "tags": []
-    },
-    "gjafakort-api": {
-      "tags": []
-    },
-    "gjafakort-application": {
-      "tags": []
-    },
-    "gjafakort-consts": {
-      "tags": []
-    },
-    "gjafakort-queue-listener": {
-      "tags": []
-    },
-    "gjafakort-types": {
-      "tags": []
+      "implicitDependencies": ["island-ui-theme"]
     },
     "gjafakort-web": {
       "tags": [],
@@ -155,41 +43,155 @@
       "tags": [],
       "implicitDependencies": ["gjafakort-web"]
     },
-    "infra-express-server": {
+    "gjafakort-api": {
       "tags": []
     },
-    "infra-monitoring": {
+    "gjafakort-application": {
       "tags": []
     },
-    "infra-nest-server": {
+    "api": {
+      "tags": []
+    },
+    "api-domains-cms": {
+      "tags": []
+    },
+    "api-schema": {
+      "tags": []
+    },
+    "island-ui-storybook": {
+      "tags": []
+    },
+    "gjafakort-queue-listener": {
+      "tags": []
+    },
+    "message-queue": {
+      "tags": []
+    },
+    "logging": {
+      "tags": []
+    },
+    "cache": {
+      "tags": []
+    },
+    "reference-backend": {
       "tags": []
     },
     "infra-tracing": {
       "tags": []
     },
-    "island-ui-contentful": {
+    "infra-express-server": {
       "tags": []
     },
-    "island-ui-core": {
-      "tags": [],
-      "implicitDependencies": ["island-ui-theme"]
+    "infra-nest-server": {
+      "tags": []
     },
-    "island-ui-storybook": {
+    "api-content-search": {
+      "tags": []
+    },
+    "services-search-indexer": {
+      "tags": []
+    },
+    "api-domains-content-search": {
+      "tags": []
+    },
+    "contentful-importer": {
+      "tags": []
+    },
+    "gjafakort-types": {
+      "tags": []
+    },
+    "gjafakort-consts": {
+      "tags": []
+    },
+    "application-system-form": {
+      "tags": []
+    },
+    "application-system-form-e2e": {
+      "tags": [],
+      "implicitDependencies": ["application-system-form"]
+    },
+    "application-system-api": {
       "tags": []
     },
     "island-ui-theme": {
       "tags": []
     },
+    "service-portal": {
+      "tags": []
+    },
+    "service-portal-e2e": {
+      "tags": [],
+      "implicitDependencies": ["service-portal"]
+    },
+    "service-portal-constants": {
+      "tags": []
+    },
+    "service-portal-core": {
+      "tags": []
+    },
+    "service-portal-applications": {
+      "tags": []
+    },
+    "service-portal-documents": {
+      "tags": []
+    },
+    "service-portal-settings": {
+      "tags": []
+    },
+    "service-portal-finance": {
+      "tags": []
+    },
+    "service-portal-family": {
+      "tags": []
+    },
+    "service-portal-health": {
+      "tags": []
+    },
+    "service-portal-education": {
+      "tags": []
+    },
+    "island-ui-contentful": {
+      "tags": []
+    },
+    "air-discount-scheme-api": {
+      "tags": []
+    },
+    "air-discount-scheme-web": {
+      "tags": []
+    },
+    "air-discount-scheme/web-e2e": {
+      "tags": [],
+      "implicitDependencies": ["air-discount-scheme-web"]
+    },
+    "air-discount-scheme-backend": {
+      "tags": []
+    },
+    "air-discount-scheme-consts": {
+      "tags": []
+    },
+    "api-domains-application": {
+      "tags": []
+    },
+    "adgerdir": {
+      "tags": []
+    },
+    "adgerdir-e2e": {
+      "tags": [],
+      "implicitDependencies": ["adgerdir"]
+    },
+    "api-domains-file-upload": {
+      "tags": []
+    },
+    "file-storage": {
+      "tags": []
+    },
+    "application-graphql": {
+      "tags": []
+    },
+    "air-discount-scheme-types": {
+      "tags": []
+    },
     "judicial-system-api": {
-      "tags": []
-    },
-    "judicial-system-consts": {
-      "tags": []
-    },
-    "judicial-system-formatters": {
-      "tags": []
-    },
-    "judicial-system-types": {
       "tags": []
     },
     "judicial-system-web": {
@@ -199,68 +201,28 @@
       "tags": [],
       "implicitDependencies": ["judicial-system-web"]
     },
-    "localization": {
-      "tags": []
-    },
-    "logging": {
-      "tags": []
-    },
-    "message-queue": {
-      "tags": []
-    },
-    "nova-sms": {
-      "tags": []
-    },
-    "reference-backend": {
-      "tags": []
-    },
-    "reference-next-app": {
-      "tags": []
-    },
-    "service-portal": {
-      "tags": []
-    },
-    "service-portal-applications": {
-      "tags": []
-    },
-    "service-portal-assets": {
-      "tags": []
-    },
-    "service-portal-constants": {
-      "tags": []
-    },
-    "service-portal-core": {
-      "tags": []
-    },
-    "service-portal-documents": {
-      "tags": []
-    },
-    "service-portal-e2e": {
-      "tags": [],
-      "implicitDependencies": ["service-portal"]
-    },
-    "service-portal-education": {
-      "tags": []
-    },
-    "service-portal-family": {
-      "tags": []
-    },
-    "service-portal-finance": {
+    "api-domains-documents": {
       "tags": []
     },
     "service-portal-graphql": {
       "tags": []
     },
-    "service-portal-health": {
+    "application-data-providers": {
       "tags": []
     },
-    "service-portal-settings": {
+    "skilavottord-ws": {
       "tags": []
     },
-    "services-search-indexer": {
+    "api-domains-translations": {
       "tags": []
     },
-    "shared-form-fields": {
+    "localization": {
+      "tags": []
+    },
+    "infra-monitoring": {
+      "tags": []
+    },
+    "judicial-system-consts": {
       "tags": []
     },
     "skilavottord-consts": {
@@ -269,22 +231,60 @@
     "skilavottord-types": {
       "tags": []
     },
-    "skilavottord-web": {
+    "elastic-indexing": {
       "tags": []
     },
-    "skilavottord-ws": {
+    "reference-next-app": {
+      "tags": []
+    },
+    "nova-sms": {
+      "tags": []
+    },
+    "service-portal-assets": {
+      "tags": []
+    },
+    "dokobit-signing": {
+      "tags": []
+    },
+    "judicial-system-types": {
+      "tags": []
+    },
+    "skilavottord-web": {
       "tags": []
     },
     "skilavottord/web-e2e": {
       "tags": [],
       "implicitDependencies": ["skilavottord-web"]
     },
-    "web": {
+    "application-templates-parental-leave": {
       "tags": []
     },
-    "web-e2e": {
-      "tags": [],
-      "implicitDependencies": ["web"]
+    "application-templates-driving-lessons": {
+      "tags": []
+    },
+    "application-template-loader": {
+      "tags": []
+    },
+    "application-templates-reference-template": {
+      "tags": []
+    },
+    "application-core": {
+      "tags": []
+    },
+    "application-ui-shell": {
+      "tags": []
+    },
+    "application-ui-fields": {
+      "tags": []
+    },
+    "shared-form-fields": {
+      "tags": []
+    },
+    "judicial-system-formatters": {
+      "tags": []
+    },
+    "email-service": {
+      "tags": []
     }
   },
   "affected": {
