@@ -5,7 +5,7 @@ import {
   RecyclingRequestUnion,
   RequestErrors,
   RequestStatus,
-} from './model/recycling.request.model'
+} from './'
 import { Logger, LOGGER_PROVIDER } from '@island.is/logging'
 import { FjarsyslaService } from '../fjarsysla/models/fjarsysla.service'
 import { RecyclingPartnerService } from '../recycling.partner/recycling.partner.service'

@@ -1,9 +1,6 @@
 import { Inject } from '@nestjs/common'
 import { Query, Resolver, Args, Mutation } from '@nestjs/graphql'
-import {
-  RecyclingRequestModel,
-  RecyclingRequestUnion,
-} from './model/recycling.request.model'
+import { RecyclingRequestModel, RecyclingRequestUnion } from './'
 import { RecyclingRequestService } from './recycling.request.service'
 import { logger, Logger, LOGGER_PROVIDER } from '@island.is/logging'
 import { VehicleModel } from '../vehicle/model/vehicle.model'

@@ -1,3 +1,8 @@
 import { RecyclingPartnerModel } from '../../recycling.partner'
 
-export { RecyclingRequestModel } from './recycling.request.model'
+export {
+  RecyclingRequestModel,
+  RecyclingRequestUnion,
+  RequestErrors,
+  RequestStatus,
+} from './recycling.request.model'
