@@ -1,0 +1,1 @@
+export { RecyclingPartnerModel } from './recycling.partner.model'
