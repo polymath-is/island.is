@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/sequelize'
-import { GdprModel } from './model/gdpr.model'
+import { GdprModel } from './'
 import { Logger, LOGGER_PROVIDER } from '@island.is/logging'
 
 @Injectable()
