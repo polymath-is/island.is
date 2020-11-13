@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/sequelize'
 import { logger, Logger, LOGGER_PROVIDER } from '@island.is/logging'
-import { RecyclingPartnerModel } from './model/recycling.partner.model'
+import { RecyclingPartnerModel } from './'
 import { RecyclingRequestModel } from '../recycling.request/model/recycling.request.model'
 
 @Injectable()

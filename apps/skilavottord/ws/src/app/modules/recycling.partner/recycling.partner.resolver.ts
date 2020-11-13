@@ -1,8 +1,8 @@
 import { logger } from '@island.is/logging'
 import { Inject } from '@nestjs/common'
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
-import { RecyclingPartnerModel } from './model/recycling.partner.model'
-import { RecyclingPartnerService } from './recycling.partner.service'
+import { RecyclingPartnerModel } from './'
+import { RecyclingPartnerService } from './'
 
 @Resolver(() => RecyclingPartnerModel)
 export class RecyclingPartnerResolver {
