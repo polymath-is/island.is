@@ -1,7 +1,3 @@
-import { RecyclingRequestModel } from './model'
-import { RecyclingRequestModule } from './recycling.request.module'
-import { RecyclingRequestService } from './recycling.request.service'
-
 export {
   RecyclingRequestModel,
   RecyclingRequestUnion,

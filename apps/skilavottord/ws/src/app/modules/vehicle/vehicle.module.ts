@@ -3,8 +3,8 @@ import { SequelizeModule } from '@nestjs/sequelize'
 import { VehicleModel } from './model'
 import { VehicleService } from './vehicle.service'
 import { VehicleResolver } from './vehicle.resolver'
-import { RecyclingRequestModel } from '../recycling.request/model/recycling.request.model'
-import { RecyclingPartnerModel } from '../recycling.partner/model/recycling.partner.model'
+import { RecyclingRequestModel } from '../recycling.request/model'
+import { RecyclingPartnerModel } from '../recycling.partner/model'
 
 @Module({
   imports: [

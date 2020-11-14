@@ -9,10 +9,9 @@ import {
 } from './model'
 import { Logger, LOGGER_PROVIDER } from '@island.is/logging'
 import { FjarsyslaService } from '../fjarsysla/models/fjarsysla.service'
-import { RecyclingPartnerService } from '../recycling.partner/recycling.partner.service'
-import { VehicleService } from '../vehicle/vehicle.service'
+import { RecyclingPartnerService } from '../recycling.partner'
+import { VehicleService, VehicleModel } from '../vehicle'
 import { environment } from '../../../environments'
-import { VehicleModel } from '../vehicle/model/vehicle.model'
 
 @Injectable()
 export class RecyclingRequestService {

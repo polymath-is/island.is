@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common'
 import { SequelizeModule } from '@nestjs/sequelize'
 import { GdprService } from './gdpr.service'
-import { GdprModel } from './model/gdpr.model'
+import { GdprModel } from './model'
 import { GdprResolver } from './gdpr.resolver'
 
 @Module({
