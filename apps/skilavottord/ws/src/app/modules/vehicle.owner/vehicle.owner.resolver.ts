@@ -1,6 +1,6 @@
 import { Inject } from '@nestjs/common'
 import { Args, Query, Resolver, Mutation } from '@nestjs/graphql'
-import { VehicleOwnerModel } from './model/vehicle.owner.model'
+import { VehicleOwnerModel } from './model'
 import { VehicleOwnerService } from './vehicle.owner.service'
 import { Logger, LOGGER_PROVIDER } from '@island.is/logging'
 import { Authorize } from '../auth'

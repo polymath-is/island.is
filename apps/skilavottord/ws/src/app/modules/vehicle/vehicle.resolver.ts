@@ -1,7 +1,7 @@
 import { Inject } from '@nestjs/common'
 import { Query, Resolver, Mutation, Args } from '@nestjs/graphql'
-import { VehicleModel } from './'
-import { VehicleService } from './'
+import { VehicleModel } from './model'
+import { VehicleService } from './vehicle.service'
 import { Logger, LOGGER_PROVIDER } from '@island.is/logging'
 import { Authorize } from '../auth'
 
