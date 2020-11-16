@@ -6,6 +6,7 @@ on:
       - 'main'
       - 'release/**'
       - 'hotfix/**'
+      - bad-build-counts-as-good
     paths-ignore:
       - '**/*.md'
     tags:
@@ -26,6 +27,7 @@ jobs:
       GIT_BRANCH: ${{ steps.git-branch.outputs.GIT_BRANCH }}
       PRE_CHECK_OK: ${{ steps.branch-name-check.outputs.PRE_CHECK_OK }}
     steps:
+      - run: exit 1
       - name: Get git branch
         id: git-branch
         run: |
