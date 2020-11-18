@@ -21,9 +21,9 @@ import {
 import { CaseState } from '@island.is/judicial-system/types'
 
 @Controller('api')
-@ApiTags('cases')
 export class GdprController {
-  private findGdprById(id: string) {
+  @Get('getGdpr/')
+  private findGdprById() {
     return 'test'
   }
 }
