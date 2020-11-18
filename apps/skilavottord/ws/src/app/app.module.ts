@@ -11,6 +11,7 @@ import { RecyclingRequestModule } from './modules/recycling.request/recycling.re
 import { VehicleOwnerModule } from './modules/vehicle.owner/vehicle.owner.module'
 import { SamgongustofaModule } from './modules/samgongustofa/samgongustofa.module'
 import { FjarsyslaModule } from './modules/fjarsysla/fjarsysla.module'
+import { BackendAPI } from '../services'
 
 const debug = process.env.NODE_ENV === 'development'
 const playground = debug || process.env.GQL_PLAYGROUND_ENABLED === 'true'
@@ -41,6 +42,6 @@ const autoSchemaFile = debug ? 'apps/skilavottord/ws/src/app/api.graphql' : true
     RecyclingRequestModule,
     VehicleOwnerModule,
   ],
-  //providers: [BackendAPI],
+  providers: [BackendAPI],
 })
 export class AppModule {}
