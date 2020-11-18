@@ -12,19 +12,16 @@ import {
   ConflictException,
   Res,
 } from '@nestjs/common'
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger'
-
-import {
-  DokobitError,
-  SigningServiceResponse,
-} from '@island.is/dokobit-signing'
-import { CaseState } from '@island.is/judicial-system/types'
 import { GdprModel } from './model/gdpr.model'
 import { GdprService } from './gdpr.service'
+import { Logger, LOGGER_PROVIDER } from '@island.is/logging'
 
 @Controller('api')
 export class GdprController {
-  constructor(private readonly gdprService: GdprService) {}
+  constructor(
+    private readonly gdprService: GdprService,
+    @Inject(LOGGER_PROVIDER) private logger: Logger,
+  ) {}
 
   /*
    *
@@ -32,7 +29,7 @@ export class GdprController {
   //@ApiOkResponse({ type: GdprModel })
   @Get('private/gdprs/')
   async gdprs(): Promise<GdprModel[]> {
-    console.log('do gdprs...')
+    this.logger.info('do gdprs...')
     const gdpr = await this.gdprService.findAll()
     if (!gdpr) {
       throw new NotFoundException(`Gdprs not found`)

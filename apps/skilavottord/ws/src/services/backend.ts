@@ -8,7 +8,6 @@ class BackendAPI extends RESTDataSource {
   baseURL = `${environment.backendUrl}/api/private`
 
   getGdprs(): Promise<Gdpr[]> {
-    console.log('baseurl->', this.baseURL)
     return this.get(`gdprs`)
   }
 }
