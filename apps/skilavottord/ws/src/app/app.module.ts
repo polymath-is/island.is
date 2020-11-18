@@ -28,6 +28,8 @@ const autoSchemaFile = debug ? 'apps/skilavottord/ws/src/app/api.graphql' : true
       playground,
       autoSchemaFile,
       path: '/api/graphql',
+      context: ({ req }) => ({ req }),
+      dataSources: () => ({ backendApi: new BackendAPI() }),
     }),
     SequelizeModule.forRootAsync({
       useClass: SequelizeConfigService,

@@ -1,4 +1,3 @@
-import { Field, ObjectType } from '@nestjs/graphql'
 import {
   Column,
   DataType,
@@ -8,17 +7,14 @@ import {
   UpdatedAt,
 } from 'sequelize-typescript'
 
-@ObjectType()
 @Table({ tableName: 'gdpr' })
 export class GdprModel extends Model<GdprModel> {
-  @Field()
   @Column({
     type: DataType.STRING,
     primaryKey: true,
   })
   nationalId: string
 
-  @Field()
   @Column({
     type: DataType.STRING,
     allowNull: false,
@@ -26,12 +22,10 @@ export class GdprModel extends Model<GdprModel> {
   })
   gdprStatus: string
 
-  @Field()
   @CreatedAt
   @Column
   createdAt: Date
 
-  @Field()
   @UpdatedAt
   @Column
   updatedAt: Date
