@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/sequelize'
-import { GdprModel } from './model/gdpr.model'
+import { GdprDto, GdprModel } from './model/gdpr.model'
 import { Logger, LOGGER_PROVIDER } from '@island.is/logging'
 
 @Injectable()
@@ -28,13 +28,17 @@ export class GdprService {
     newGdpr.save()
   }
 
+  async createNewGdpr(gdpr: GdprDto) {
+    this.logger.info(
+      `Insert gdpr nationalId:${gdpr.nationalId} gdprStatus: ${gdpr.gdprStatus}`,
+    )
+    const newGdpr: GdprModel = new GdprModel()
+    newGdpr.nationalId = gdpr.nationalId
+    newGdpr.gdprStatus = gdpr.gdprStatus
+    await newGdpr.save()
+  }
+
   async findAll(): Promise<GdprModel[]> {
     return await this.gdprModel.findAll()
   }
-
-  // async create(gdpr: Gdpr): Promise<Gdpr> {
-  //   //this.logger.debug(`Creating gdpr with nationalId - ${gdpr.nationalId}`)
-  //   this.applicationsRegistered.labels('res1').inc()
-  //   return this.gdprModel.create(gdpr)
-  // }
 }

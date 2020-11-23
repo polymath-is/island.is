@@ -7,8 +7,13 @@ import {
   UpdatedAt,
 } from 'sequelize-typescript'
 
+export interface GdprDto {
+  nationalId: string
+  gdprStatus: string
+}
+
 @Table({ tableName: 'gdpr' })
-export class GdprModel extends Model<GdprModel> {
+export class GdprModel extends Model<GdprModel> implements GdprDto {
   @Column({
     type: DataType.STRING,
     primaryKey: true,
