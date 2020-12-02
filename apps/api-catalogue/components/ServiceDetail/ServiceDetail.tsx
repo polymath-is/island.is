@@ -4,6 +4,7 @@ import {
   AccordionItem,
   Box,
   Breadcrumbs,
+  Link,
   LoadingIcon,
   Select,
   Text,
@@ -58,9 +59,11 @@ export const ServiceDetail = ({ service, strings }: ServiceDetailProps) => {
   return (
     <Box className={cn(styles.root)}>
       <Breadcrumbs>
-        <a href="/">Viskuausan</a>
-        <a href="/services">API Vörulisti</a>
-        <span>{service.name}</span>
+        <Link href="https://island.is/">Ísland.is</Link>
+        <Link href="https://throun.island.is/">Þróun</Link>
+        <Link href="/">Vefjþjónustur</Link>
+        <Link href="/services">API Vörulisti</Link>
+        <Link href={`/services/${service.id}`}>{service.id}</Link>
       </Breadcrumbs>
       <div className={cn(styles.topSection)}>
         <h1 className="name" data-id={service.id}>
