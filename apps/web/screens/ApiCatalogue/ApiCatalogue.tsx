@@ -1,28 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Screen } from '@island.is/web/types'
 
 import { GetNamespaceQuery } from '@island.is/web/graphql/schema'
 import {
-  GetApiCatalogueInput,
   Query,
   QueryGetApiCatalogueArgs,
   QueryGetNamespaceArgs,
 } from '@island.is/api/schema'
 
 import { GET_NAMESPACE_QUERY } from '../queries'
-import { useQuery } from 'react-apollo'
 import { GET_CATALOGUE_QUERY } from '../queries/ApiCatalogue'
+import { useNamespace } from '../../hooks'
 
 import { withMainLayout } from '@island.is/web/layouts/main'
 import getConfig from 'next/config'
-import { CustomNextError } from '@island.is/web/units/errors'
-import { ApiService, GetOpenApiInput } from '@island.is/api/schema'
-import { ServiceListContainer } from 'apps/web/components/ServiceListContainer/ServiceListContainer'
 import {
-  ApolloClient,
-  ApolloError,
-  NormalizedCacheObject,
-} from '@apollo/client'
+  ServiceListContainer,
+  TagDisplayNames,
+} from 'apps/web/components/ServiceListContainer/ServiceListContainer'
+import { ApolloError } from '@apollo/client'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -33,6 +29,8 @@ interface ApiCatalogueProps {
   data: Query
   loading: boolean
   error: ApolloError
+  staticContent: GetNamespaceQuery['getNamespace']
+  filterContent: GetNamespaceQuery['getNamespace']
 }
 
 const LIMIT = 100
@@ -42,6 +40,8 @@ const ApiCatalogue: Screen<ApiCatalogueProps> = ({
   data,
   loading,
   error,
+  staticContent,
+  filterContent,
 }) => {
   // const { disableApiCatalog: disablePage } = publicRuntimeConfig
 
@@ -49,74 +49,35 @@ const ApiCatalogue: Screen<ApiCatalogueProps> = ({
   //   throw new CustomNextError(404, 'Not found')
   // }
 
-  //const TEXT_NOT_FOUND = n('notFound')
-  //const HEADING_ERROR = n('errorHeading')
-  //const TEXT_ERROR = n('errorText')
-  //const TEXT_LOAD_MORE = n('fmButton')
-  const TEXT_NOT_FOUND = 'Ekkert fannst'
-  const HEADING_ERROR = 'Villa átti sér stað'
-  const TEXT_ERROR = 'Vinsamlegast reyndu aftur.'
-  const TEXT_LOAD_MORE = 'Sjá fleiri'
+  const n = useNamespace(staticContent)
+  const fn = useNamespace(filterContent)
+  const TEXT_NOT_FOUND = n('notFound')
+  const HEADING_ERROR = n('errorHeading')
+  const TEXT_ERROR = n('errorText')
+  const TEXT_LOAD_MORE = n('fmButton')
 
-  // const translateTags = (): TagDisplayNames => {
-  //   const names: TagDisplayNames = {
-  //     APIGW: fn('accessApigw'),
-  //     XROAD: fn('accessXroad'),
-  //     FINANCIAL: fn('dataFinancial'),
-  //     HEALTH: fn('dataHealth'),
-  //     OFFICIAL: fn('dataOfficial'),
-  //     PERSONAL: fn('dataPersonal'),
-  //     PUBLIC: fn('dataPublic'),
-  //     FREE: fn('pricingFree'),
-  //     PAID: fn('pricingPaid'),
-  //     GRAPHQL: fn('typeGraphql'),
-  //     REST: fn('typeRest'),
-  //     SOAP: fn('typeSoap'),
-  //     OPEN: 'OPEN', //tag not currently used
-  //   }
-
-  //   return names
-  // }
-
-  // const [parameters, setParameters] = useState<GetApiCatalogueInput>({
-  //   cursor: null,
-  //   limit: LIMIT,
-  //   query: '',
-  //   pricing: [],
-  //   data: [],
-  //   type: [],
-  //   access: [],
-  // })
-
-  // const { data, loading, error, fetchMore, refetch } = useQuery<Query, QueryGetApiCatalogueArgs>(GET_CATALOGUE_QUERY,
-  //   {
-  //     variables: {
-  //       input: parameters,
-  //     },
-  //   })
-
-  // const onLoadMore = () => {
-  //     if (data?.getApiCatalogue.pageInfo?.nextCursor == null) {
-  //       return
-  //     }
-
-  //     const { nextCursor } = data?.getApiCatalogue?.pageInfo
-  //     const param = { ...parameters, cursor: nextCursor }
-  //     fetchMore({
-  //       variables: { input: param },
-  //       updateQuery: (prevResult, { fetchMoreResult }) => {
-  //         fetchMoreResult.getApiCatalogue.services = [
-  //           ...prevResult.getApiCatalogue.services,
-  //           ...fetchMoreResult.getApiCatalogue.services,
-  //         ]
-  //         return fetchMoreResult
-  //       },
-  //     })
-  //   }
+  const translateTags = (): TagDisplayNames => {
+    const names: TagDisplayNames = {
+      APIGW: fn('accessApigw'),
+      XROAD: fn('accessXroad'),
+      FINANCIAL: fn('dataFinancial'),
+      HEALTH: fn('dataHealth'),
+      OFFICIAL: fn('dataOfficial'),
+      PERSONAL: fn('dataPersonal'),
+      PUBLIC: fn('dataPublic'),
+      FREE: fn('pricingFree'),
+      PAID: fn('pricingPaid'),
+      GRAPHQL: fn('typeGraphql'),
+      REST: fn('typeRest'),
+      SOAP: fn('typeSoap'),
+      OPEN: 'OPEN', //tag not currently used
+    }
+    return names
+  }
 
   return (
     <div>
-      <h1>{title}</h1>
+      <h1>{title + ' - ' + TEXT_ERROR}</h1>
       <ServiceListContainer
         services={data?.getApiCatalogue.services}
         span={['12/12', '12/12', '12/12', '6/12', '4/12']}
@@ -127,7 +88,7 @@ const ApiCatalogue: Screen<ApiCatalogueProps> = ({
           error ? { heading: HEADING_ERROR, text: TEXT_ERROR } : undefined
         }
         loadMoreButtonText={TEXT_LOAD_MORE}
-        // tagDisplayNames={translateTags()}
+        tagDisplayNames={translateTags()}
         // onLoadMoreClick={onLoadMore}
       />
       {/* <ServiceListContainer
@@ -155,59 +116,57 @@ const ApiCatalogue: Screen<ApiCatalogueProps> = ({
 }
 
 ApiCatalogue.getInitialProps = async ({ apolloClient, locale, query }) => {
-  // const [staticContent, filterContent] = await Promise.all([
-  //   apolloClient
-  //     .query<GetNamespaceQuery, QueryGetNamespaceArgs>({
-  //       query: GET_NAMESPACE_QUERY,
-  //       variables: {
-  //         input: {
-  //           namespace: 'ApiCatalog',
-  //           lang: locale,
-  //         },
-  //       },
-  //     })
-  //     .then((res) => JSON.parse(res.data.getNamespace.fields)),
-  //     apolloClient
-  //     .query<GetNamespaceQuery, QueryGetNamespaceArgs>({
-  //       query: GET_NAMESPACE_QUERY,
-  //       variables: {
-  //         input: {
-  //           namespace: 'ApiCatalogFilter',
-  //           lang: locale,
-  //         },
-  //       },
-  //     })
-  //     .then((res) => JSON.parse(res.data.getNamespace.fields)),
-  // ])
-  // console.log("filterContent");
-  // console.log(filterContent);
-  // console.log(Object.keys(filterContent));
-
-  const { data, loading, error, fetchMore, refetch } = 
-    await apolloClient.query<Query, QueryGetApiCatalogueArgs >({
-      query: GET_CATALOGUE_QUERY,
-      variables: {
-        input: {
-          cursor: null,
-          limit: LIMIT,
-          query: '',
-          pricing: [],
-          data: [],
-          type: [],
-          access: [],
+  console.log(locale)
+  const [staticContent, filterContent] = await Promise.all([
+    apolloClient
+      .query<GetNamespaceQuery, QueryGetNamespaceArgs>({
+        query: GET_NAMESPACE_QUERY,
+        variables: {
+          input: {
+            namespace: 'ApiCatalog',
+            lang: locale,
+          },
         },
+      })
+      .then((res) => JSON.parse(res.data.getNamespace.fields)),
+    apolloClient
+      .query<GetNamespaceQuery, QueryGetNamespaceArgs>({
+        query: GET_NAMESPACE_QUERY,
+        variables: {
+          input: {
+            namespace: 'ApiCatalogFilter',
+            lang: locale,
+          },
+        },
+      })
+      .then((res) => JSON.parse(res.data.getNamespace.fields)),
+  ])
+
+  const { data, loading, error } = await apolloClient.query<
+    Query,
+    QueryGetApiCatalogueArgs
+  >({
+    query: GET_CATALOGUE_QUERY,
+    variables: {
+      input: {
+        cursor: null,
+        limit: LIMIT,
+        query: '',
+        pricing: [],
+        data: [],
+        type: [],
+        access: [],
       },
-    })
-  console.log("data")
-  console.log(data?.getApiCatalogue.services)
-   console.log(loading)
-   console.log(error)
-  console.log('date', Date())
+    },
+  })
+
   return {
     title: 'Vörulisti Vefþjónusta',
     data: data,
     loading,
-    error
+    error,
+    staticContent,
+    filterContent,
   }
 }
 
