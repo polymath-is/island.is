@@ -49,7 +49,7 @@ export interface ServiceListContainerProps {
   tagDisplayNames?: TagDisplayNames //If you want different display names for tag
   loading?: Boolean // pass true to show loading icon
   emptyListText?: string
-  errorMessage?: ErrorMessage
+  errorMessage?: ErrorMessage //pass null if no error
   loadMoreButtonText?: string
   onLoadMoreClick?: () => void
   moreToLoad?: Boolean //should the loadMore button be shown
