@@ -30,26 +30,24 @@ const { publicRuntimeConfig } = getConfig()
 
 interface ApiCatalogueProps {
   title: string
-  client: ApolloClient<NormalizedCacheObject>
   data: Query
   loading: boolean
   error: ApolloError
 }
 
-const LIMIT = 1000
+const LIMIT = 3
 
 const ApiCatalogue: Screen<ApiCatalogueProps> = ({
   title,
-  client,
   data,
   loading,
   error,
 }) => {
-  const { disableApiCatalog: disablePage } = publicRuntimeConfig
+  // const { disableApiCatalog: disablePage } = publicRuntimeConfig
 
-  if (disablePage === 'true') {
-    throw new CustomNextError(404, 'Not found')
-  }
+  // if (disablePage === 'true') {
+  //   throw new CustomNextError(404, 'Not found')
+  // }
 
   //const TEXT_NOT_FOUND = n('notFound')
   //const HEADING_ERROR = n('errorHeading')
@@ -150,7 +148,8 @@ const ApiCatalogue: Screen<ApiCatalogueProps> = ({
             xroadIdentifier: [{instance: 'IS-DEV',memberClass: 'COM',memberCode: '10002',subsystemCode: 'Origo-Protected',serviceCode: 'petstore-v1',},{instance: 'IS-DEV',memberClass: 'COM',memberCode: '10002',subsystemCode: 'Origo-Protected',serviceCode: 'petstore-v2',},],
           },
         ]}
-      /> */}
+      />
+      <pre>{JSON.stringify(data?.getApiCatalogue?.services)}</pre> */}
     </div>
   )
 }
@@ -184,31 +183,31 @@ ApiCatalogue.getInitialProps = async ({ apolloClient, locale, query }) => {
   // console.log(filterContent);
   // console.log(Object.keys(filterContent));
 
-  const { data, loading, error, fetchMore, refetch } = await apolloClient.query<
-    Query,
-    QueryGetApiCatalogueArgs
-  >({
-    query: GET_CATALOGUE_QUERY,
-    variables: {
-      input: {
-        cursor: null,
-        limit: LIMIT,
-        query: '',
-        pricing: [],
-        data: [],
-        type: [],
-        access: [],
+  const { data, loading, error, fetchMore, refetch } = 
+    await apolloClient.query<Query, QueryGetApiCatalogueArgs >({
+      query: GET_CATALOGUE_QUERY,
+      variables: {
+        input: {
+          cursor: null,
+          limit: LIMIT,
+          query: '',
+          pricing: [],
+          data: [],
+          type: [],
+          access: [],
+        },
       },
-    },
-  })
+    })
+  console.log("data")
   console.log(data?.getApiCatalogue.services)
-  console.log(loading)
-  console.log(error)
+   console.log(loading)
+   console.log(error)
   console.log('date', Date())
   return {
     title: 'Vörulisti Vefþjónusta',
-    client: apolloClient,
     data: data,
+    loading,
+    error
   }
 }
 
