@@ -35,7 +35,7 @@ interface ApiCatalogueProps {
   error: ApolloError
 }
 
-const LIMIT = 3
+const LIMIT = 100
 
 const ApiCatalogue: Screen<ApiCatalogueProps> = ({
   title,
