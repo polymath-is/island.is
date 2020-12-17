@@ -18,6 +18,7 @@ import {
   Link,
   Navigation,
   TableOfContents,
+  Hyphen,
 } from '@island.is/island-ui/core'
 import { RichText, HeadWithSocialSharing } from '@island.is/web/components'
 import { withMainLayout } from '@island.is/web/layouts/main'
@@ -202,6 +203,38 @@ const ArticleNavigation: FC<
   )
 }
 
+interface InstitutionProps {
+  img: string
+  institutionTitle: string
+  institution: string
+}
+
+const Institution = ({
+  img,
+  institutionTitle,
+  institution,
+}: InstitutionProps) => {
+  return (
+    <Box
+      background="purple100"
+      borderRadius="large"
+      padding={[3, 3, 4]}
+      display="flex"
+      alignItems="flexStart"
+    >
+      <img src={img} width={65} />
+      <Box marginLeft={3}>
+        <Text variant="eyebrow" color="purple600">
+          {institutionTitle}
+        </Text>
+        <Text variant="h3" color="purple600" lineHeight="sm">
+          <Hyphen locale="is">{institution}</Hyphen>
+        </Text>
+      </Box>
+    </Box>
+  )
+}
+
 interface ArticleSidebarProps {
   article: Article
   activeSlug?: string | string[]
@@ -213,8 +246,16 @@ const ArticleSidebar: FC<ArticleSidebarProps> = ({
   activeSlug,
   n,
 }) => {
+  console.log(article)
   return (
     <Stack space={3}>
+      <Institution
+        img={
+          'https://upload.wikimedia.org/wikipedia/commons/9/90/Coat_of_arms_of_Iceland.svg'
+        }
+        institutionTitle={'Stofnun'}
+        institution={article.organization[0].title}
+      />
       <ArticleNavigation article={article} activeSlug={activeSlug} n={n} />
       <RelatedArticles
         title={n('relatedMaterial')}
