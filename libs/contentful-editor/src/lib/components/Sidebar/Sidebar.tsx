@@ -2,10 +2,15 @@ import React, { FC, useContext } from 'react'
 import { Box, Text } from '@island.is/island-ui/core'
 import { renderer, ContentfulContext } from '@island.is/contentful-editor'
 
+import entries from '../../fixtures/entries.json'
+import types from '../../fixtures/types.json'
+import assets from '../../fixtures/assets.json'
+import { SmartField } from '../SmartField/SmartField'
+
 import * as styles from './Sidebar.treat'
 
 export const Sidebar: FC = () => {
-  const { isLoading, entry, onChange } = useContext(ContentfulContext)
+  const { loading, entry, onChange } = useContext(ContentfulContext)
 
   return (
     <>
@@ -14,9 +19,13 @@ export const Sidebar: FC = () => {
           Contentful Editor Mode
         </Text>
 
-        {isLoading && <Text marginTop={2}>Loading...</Text>}
+        {loading && <Text marginTop={2}>Loading...</Text>}
 
-        {!isLoading &&
+        {!loading && (
+          <SmartField entryId={entry?._id} data={{ entries, types, assets }} />
+        )}
+
+        {/* !loading &&
           (entry?.fields ?? []).map((field) => {
             field._emitter.on('*', (type, e) => {
               if (type === 'onValueChanged') {
@@ -39,7 +48,7 @@ export const Sidebar: FC = () => {
                 {renderer(field, field._sdk)}
               </Box>
             )
-          })}
+          }) */}
       </Box>
 
       <Box className={styles.overlay} />
